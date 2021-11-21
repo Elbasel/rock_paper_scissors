@@ -1,23 +1,24 @@
 function chooseRandom(choices) {
+    // returns a random choice from a collection
     var index = Math.floor(Math.random() * choices.length);
     return choices[index];
 }
 
-function getUserInput() {
-
+function getUserHand() {
+    // returns either 'rock', 'paper', 'scissors' or null
     let userInput = prompt('Rock, Paper or Scissors?').toLowerCase();
     return (VALID_HANDS.includes(userInput) ? userInput : null);
 }
 
 
-function generateComputerInput() {
+function getRandomHand() {
+    // return a random hand
     let choice = chooseRandom(VALID_HANDS)
     return choice 
 }
 
 function getWinningHand(hand_1, hand_2) {
-    // debugger
-
+    // return the winning hand
     let handIndex = VALID_HANDS.indexOf(hand_1)
 
     let weakerHand = VALID_HANDS.slice(handIndex - 1)[0];
@@ -32,13 +33,15 @@ function getWinningHand(hand_1, hand_2) {
     }
 }
 
-function getWinner(userHand, computerHand) {
-    let winningHand = getWinningHand(userHand, computerHand)
+function getWinner(playerHand, computerHand) {
+    // returns either 'tie', 'player' or computer
+    // arguments order matter!
+    let winningHand = getWinningHand(playerHand, computerHand)
 
     if (winningHand === null) {
         return 'tie'
     }
-    else if (userHand === winningHand) {
+    else if (playerHand === winningHand) {
         return 'player'
     }
     else {
@@ -48,25 +51,25 @@ function getWinner(userHand, computerHand) {
 }
 
 function playRound() {
-    let userInput = getUserInput();
+    let userInput = getUserHand();
     while (userInput === null) {
         alert('Invalid Input, Please try again.')
-        userInput = getUserInput()
+        userInput = getUserHand()
     }
     
-    let computerInput = generateComputerInput()
+    let computerInput = getRandomHand()
 
     let winner = getWinner(userInput, computerInput)
 
     switch (winner) {
         case 'tie':
-            console.log('%cIt\'s a tie.', REGULAR_CSS);
+            console.log('%cIt\'s a tie.', REGULAR_CSS + 'background: grey;');
             break
         case 'player':
-            console.log('%cYou won!', REGULAR_CSS)
+            console.log('%cYou won!', REGULAR_CSS + 'background: green;')
             break
         case 'computer':
-            console.log('%cYou lost!', REGULAR_CSS)
+            console.log('%cYou lost!', REGULAR_CSS + 'background: red;')
             break
     }
     console.log(`%cComputer chose ${computerInput}`, REGULAR_CSS)
@@ -82,23 +85,23 @@ function playgame(rounds=MAX_ROUNDS) {
     playerScore = computerScore = 0;
 
     for (let i = 0; i < rounds; i++) {
-        console.log(`%cPlayer: ${playerScore}`, SUB_HEADER_CSS);
-        console.log(`%cComputer: ${computerScore}`, SUB_HEADER_CSS);
         winner = playRound()
 
         if (winner === 'player') {playerScore++}
         if (winner === 'computer') {computerScore++}
 
+        console.log(`%cPlayer: ${playerScore}`, SUB_HEADER_CSS);
+        console.log(`%cComputer: ${computerScore}`, SUB_HEADER_CSS);
     }
 
     if (playerScore > computerScore) {
-        console.log(`%cYou won with a total of ${playerScore} wins!`, HEADER_CSS)
+        console.log(`%cYou won with a total of ${playerScore} wins!`, HEADER_CSS + 'background: green;')
     }
     else if (playerScore < computerScore) {
-        console.log(`%cComputer won with a total of ${computerScore} wins!`, HEADER_CSS)
+        console.log(`%cComputer won with a total of ${computerScore} wins!`, HEADER_CSS + 'background: red;')
     }
     else {
-        console.log(`%cIt's a tie! ${playerScore}-${computerScore}`)
+        console.log(`%cIt's a tie! ${playerScore}-${computerScore}`, HEADER_CSS + 'background: grey;')
     }
 }
 
