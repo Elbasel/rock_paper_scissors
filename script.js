@@ -1,13 +1,28 @@
+const capitalize = (str, lower = false) =>
+    // returns capitalized string
+    (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, match => match.toUpperCase());
+
+
 function chooseRandom(choices) {
     // returns a random choice from a collection
     var index = Math.floor(Math.random() * choices.length);
     return choices[index];
 }
 
-function getUserHand() {
-    // returns either 'rock', 'paper', 'scissors' or null
-    let userInput = prompt('Rock, Paper or Scissors?').toLowerCase();
-    return (VALID_HANDS.includes(userInput) ? userInput : null);
+
+function getplayerHand() {
+    // returns either 'rock', 'paper', 'scissors' or null\
+    let promptString = '';
+    for (let i = 0; i < VALID_HANDS.length; i++) {
+        if (i === VALID_HANDS.length - 1) {
+            promptString += `or ${capitalize(VALID_HANDS[i])}`
+        } 
+        else {
+            promptString += `${capitalize(VALID_HANDS[i])}, `
+        }
+    }
+    let playerHand = prompt(promptString + ' ?').toLowerCase();
+    return (VALID_HANDS.includes(playerHand) ? playerHand : null);
 }
 
 
@@ -18,9 +33,10 @@ function getRandomHand() {
 }
 
 function getWinningHand(hand_1, hand_2) {
-    // return the winning hand
+    // returns the winning hand
     let handIndex = VALID_HANDS.indexOf(hand_1)
 
+    // get the previous value in the VALID_HANDS array
     let weakerHand = VALID_HANDS.slice(handIndex - 1)[0];
     if (hand_2 === weakerHand) {
         return hand_1
@@ -51,15 +67,16 @@ function getWinner(playerHand, computerHand) {
 }
 
 function playRound() {
-    let userInput = getUserHand();
-    while (userInput === null) {
+    // starts a round and returns round winner
+    let playerHand = getplayerHand();
+    while (playerHand === null) {
         alert('Invalid Input, Please try again.')
-        userInput = getUserHand()
+        playerHand = getplayerHand()
     }
     
-    let computerInput = getRandomHand()
+    let computerHand = getRandomHand()
 
-    let winner = getWinner(userInput, computerInput)
+    let winner = getWinner(playerHand, computerHand)
 
     switch (winner) {
         case 'tie':
@@ -72,13 +89,15 @@ function playRound() {
             console.log('%cYou lost!', REGULAR_CSS + 'background: red;')
             break
     }
-    console.log(`%cComputer chose ${computerInput}`, REGULAR_CSS)
+    console.log(`%cYou chose: ${playerHand}`, REGULAR_CSS)
+    console.log(`%cComputer chose: ${computerHand}`, REGULAR_CSS)
 
     return winner
 }
 
 
 function playgame(rounds=MAX_ROUNDS) {
+    // start a game of {rounds} number of rounds
     console.log(`%c${rounds} round game starting.`, HEADER_CSS);
     let playerScore, computerScore;
 
@@ -107,6 +126,7 @@ function playgame(rounds=MAX_ROUNDS) {
 
 const MAX_ROUNDS = 5
 const VALID_HANDS = ['rock', 'paper', 'scissors'];
+
 const REGULAR_CSS = 'color:#fff; font-family:\'Ubuntu\'; font-weight:100; font-size:18px;'
 const HEADER_CSS = 'color:#fff; font-family:\'Ubuntu\'; display: block;font-weight:bold; font-size:48px;'
 const SUB_HEADER_CSS = 'color:#fff; font-family:\'Ubuntu\'; font-weight:100; font-size:24px;'
