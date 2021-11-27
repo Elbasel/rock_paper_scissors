@@ -1,0 +1,182 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: 0;
+}
+
+
+body {
+    /* border-color: #736b5e; */
+    background-color: #131516;
+    color: #d8d4cf;
+    height: 100vh;
+}
+
+main {
+    /* border: 1px solid white; */
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#round-area {
+    /* border: 1px solid blue; */
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2em;
+    margin: 16px;
+    padding: 16px;
+    border: 1px solid rgb(34, 34, 204);
+}
+
+
+#score-area {
+    border: 1px solid rgb(34, 34, 204);
+    flex: 1;
+
+    display: flex;
+    justify-content: space-evenly;
+    /* gap: 350px; */
+    align-items: center;
+
+    margin: 16px;
+    padding: 16px;
+}
+
+
+
+#play-area {
+    /* border: 1px solid red; */
+    flex: 8;
+
+    display: flex;
+}
+
+.selection-area {
+    /* border: 1px solid rgb(34, 34, 204); */
+    flex: 3;
+
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+
+    margin: 16px;
+    /* padding: 16px; */
+}
+
+
+
+.score {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+
+    font-size: 2em;
+}
+
+
+.hand {
+    /* border: 1px solid cyan; */
+    flex: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#winner {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.selection-area img {
+    max-height: 80px;
+}
+
+.hand img {
+    width: 185px;
+    height: 200px;
+}
+
+p {
+    color: #d8d4cf;
+    font-size: 20px;
+}
+
+#winner {
+    font-size: 52px;
+}
+
+button {
+    padding: 16px;
+    width: 200px;
+    /* height: 140px; */
+    /* height: 50px; */
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+button:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+button:active {
+    color: #000
+}
+
+button:active:after {
+    background: transparent;
+}
+
+button:hover:before {
+    opacity: 1;
+}
+
+button:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}

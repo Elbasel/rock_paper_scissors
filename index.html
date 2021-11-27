@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,60 @@
     <title>Rock Paper Scissors</title>
 
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
 </head>
+
 <body>
-    
+    <main>
+        <div id="round-area">Round 1</div>
+
+        <div id="score-area">
+
+            <div class="score">
+                <div id="first-player-name">Player</div>
+                <div id="first-player-score">0</div>
+            </div>
+
+            <div class="score">
+                <div>Ties</div>
+                <div id="tie-score">0</div>
+            </div>
+
+            <div class="score">
+                <div id="second-player-name">Computer</div>
+                <div id="second-player-score">0</div>
+            </div>
+
+        </div>
+
+        <div id="play-area">
+            <div class="hand">
+                <img id="first-hand" src="images/paper.png">
+            </div>
+
+            <div id="winner">
+            </div>
+
+            <div class="hand">
+                <img id="second-hand" src="images/paper.png">
+            </div>
+        </div>
+
+        <div class="selection-area">
+            <button id="rock">
+                <img src="images/rock.png">
+                <p>Rock</p>
+            </button>
+            <button id="paper">
+                <img src="images/paper.png">
+                <p>Paper</p>
+            </button>
+            <button id="scissors">
+                <img src="images/scissors.png">
+                <p>Scissors</p>
+            </button>
+        </div>
+    </main>
 </body>
+
 </html>
