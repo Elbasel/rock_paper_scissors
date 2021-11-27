@@ -114,10 +114,10 @@ function playgame(rounds=MAX_ROUNDS) {
     }
 
     if (playerScore > computerScore) {
-        console.log(`%cYou won with a total of ${playerScore} wins!`, HEADER_CSS + 'background: green;')
+        console.log(`%cYou won with a score of ${playerScore} to ${computerScore}`, HEADER_CSS + 'background: green;')
     }
     else if (playerScore < computerScore) {
-        console.log(`%cComputer won with a total of ${computerScore} wins!`, HEADER_CSS + 'background: red;')
+        console.log(`%cComputer won with a score of ${computerScore} to ${playerScore}`, HEADER_CSS + 'background: red;')
     }
     else {
         console.log(`%cIt's a tie! ${playerScore}-${computerScore}`, HEADER_CSS + 'background: grey;')
