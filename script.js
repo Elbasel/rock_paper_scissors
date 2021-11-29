@@ -71,6 +71,7 @@ function playRound(playerHand) {
     computerScoreOuput.textContent = computerScore
     tieScoreOutput.textContent = tieScore
     
+
     roundNumberOuput.textContent = `Round ${roundNumber}`
 }
 
@@ -79,6 +80,20 @@ function updateHandImages(playerChoice, ComputerChoice) {
     playerHand.setAttribute('src', `images/${playerChoice}.png`)
     ComputerHand.setAttribute('src', `images/${ComputerChoice}.png`)
 } 
+
+function reset() {
+    playerScore = computerScore = tieScore = 0;
+    roundNumber = 1;
+    updateHandImages('paper', 'paper')
+    playerScoreOutput.textContent = playerScore
+    computerScoreOuput.textContent = computerScore
+    tieScoreOutput.textContent = tieScore
+    
+
+    roundNumberOuput.textContent = `Round ${roundNumber}`
+    winnerArea.textContent = '';
+}
+
 
 const VALID_HANDS = ['rock', 'paper', 'scissors']
 
@@ -103,4 +118,6 @@ playerScore = computerScore = tieScore = 0
 const playerScoreOutput = document.getElementById('first-player-score')
 const computerScoreOuput = document.getElementById('second-player-score')
 const tieScoreOutput = document.getElementById('tie-score')
-const roundNumberOuput = document.getElementById('round-area')
+const roundNumberOuput = document.getElementById('round-number')
+const resetButton = document.getElementById('reset')
+resetButton.addEventListener('click', () => reset())

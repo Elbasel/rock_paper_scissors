@@ -8,21 +8,18 @@
 
 
 body {
-    /* border-color: #736b5e; */
     background-color: #131516;
     color: #d8d4cf;
     height: 100vh;
 }
 
 main {
-    /* border: 1px solid white; */
     max-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 #round-area {
-    /* border: 1px solid blue; */
     flex: 1;
 
     display: flex;
@@ -32,17 +29,16 @@ main {
     font-size: 2em;
     margin: 16px;
     padding: 16px;
-    border: 1px solid rgb(34, 34, 204);
+    border: 1px solid rgb(60, 60, 209);
 }
 
 
 #score-area {
-    border: 1px solid rgb(34, 34, 204);
+    border: 1px solid rgb(60, 60, 209);
     flex: 1;
 
     display: flex;
     justify-content: space-evenly;
-    /* gap: 350px; */
     align-items: center;
 
     margin: 16px;
@@ -52,14 +48,12 @@ main {
 
 
 #play-area {
-    /* border: 1px solid red; */
     flex: 8;
 
     display: flex;
 }
 
 .selection-area {
-    /* border: 1px solid rgb(34, 34, 204); */
     flex: 3;
 
     display: flex;
@@ -68,7 +62,6 @@ main {
     justify-content: center;
 
     margin: 16px;
-    /* padding: 16px; */
 }
 
 
@@ -84,7 +77,6 @@ main {
 
 
 .hand {
-    /* border: 1px solid cyan; */
     flex: 2;
 
     display: flex;
@@ -119,11 +111,42 @@ p {
     font-size: 52px;
 }
 
-button {
+
+#round-area {
+    display: flex;
+    justify-content: center;
+}
+
+#reset {
+    position: relative;
+    left: 42%;
+}
+
+#reset button {
+    background: rgb(39, 62, 131);;
+    padding: 16px;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+
+#reset button:hover {
+    background: royalblue;
+}
+
+
+#reset button:active {
+    background: cyan;
+}
+
+#round-number {
+    position: relative;
+    left: 4%;
+}
+
+.selection-area button {
     padding: 16px;
     width: 200px;
-    /* height: 140px; */
-    /* height: 50px; */
     border: none;
     outline: none;
     color: #fff;
@@ -134,7 +157,7 @@ button {
     border-radius: 10px;
 }
 
-button:before {
+.selection-area button:before {
     content: '';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
@@ -151,19 +174,19 @@ button:before {
     border-radius: 10px;
 }
 
-button:active {
+.selection-area button:active {
     color: #000
 }
 
-button:active:after {
+.selection-area button:active:after {
     background: transparent;
 }
 
-button:hover:before {
+.selection-area button:hover:before {
     opacity: 1;
 }
 
-button:after {
+.selection-area button:after {
     z-index: -1;
     content: '';
     position: absolute;
@@ -180,3 +203,4 @@ button:after {
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
+
